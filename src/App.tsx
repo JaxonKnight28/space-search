@@ -7,6 +7,7 @@ import { HomePage } from './views/public/home.view';
 import { EpicPhotoSearch } from './views/public/EPIC.view';
 import { LoginView } from './views/public/login.view';
 import { SearchRover } from './views/public/searchRover.view';
+import { SignUp } from './views/public/signUp.view';
 
 
 function App() {
@@ -35,6 +36,9 @@ function App() {
             <Menu.Item>
               <Link to="/login">Login</Link>
             </Menu.Item>
+            <Menu.Item>
+              <Link to="/sign-up">Sign Up</Link>
+            </Menu.Item>
           </Menu.Menu>
         </Menu>
       </header>
@@ -45,6 +49,7 @@ function App() {
         <Route path='/epic' element={<EpicPhotoSearch />} />
         <Route path='/photo-of-the-day' element={<PhotoOfTheDay />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </div>
   )
