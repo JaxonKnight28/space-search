@@ -47,7 +47,6 @@ export function Login() {
         })
         if (success == false) {
             alert('incorrect account')
-            console.log('failed');
         }
     }
 
