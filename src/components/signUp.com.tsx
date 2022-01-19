@@ -5,6 +5,7 @@ import { Button, Form } from "semantic-ui-react";
 import { initializeApp } from "firebase/app"
 import { getFirestore } from "firebase/firestore"
 import { collection, getDocs, addDoc } from "firebase/firestore"
+import { useNavigate } from "react-router";
 
 initializeApp({
     apiKey: "AIzaSyD0x7_WJenbZkGSk9Ea_vRQ-9-OK9FRSq0",
@@ -25,10 +26,13 @@ export type SignUpValues = {
 }
 
 export function SignUpComp() {
+    const [loading, setLoading] = useState<boolean>(false)
+    const navigate = useNavigate()
     const [signUpData, setLogInData] = useState<SignUpValues>({})
     let success = true;
 
     const handleSubmit = async () => {
+        setLoading(true)
         let users: any[] = [];
         const querySnapshot = await getDocs(collection(db, "Users"));
         querySnapshot.forEach((doc) => {
@@ -39,11 +43,13 @@ export function SignUpComp() {
             console.log(user.username, signUpData.username);
 
             if (user.username === signUpData.username && user.password === signUpData.password) {
+                setLoading(false)
                 alert('That account already exists')
                 success = false
             }
         })
         if (success) {
+            setLoading(false)
             console.log('worked');
             try {
                 const docRef = await addDoc(collection(db, "Users"), {
@@ -51,6 +57,7 @@ export function SignUpComp() {
                     password: `${signUpData.password}`,
                 });
                 console.log("Document written with ID: ", docRef.id);
+                navigate('/')
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
@@ -63,6 +70,7 @@ export function SignUpComp() {
 
     return (
         <Form onSubmit={handleSubmit}>
+            {loading ? "Loading ..." : null}
             <Form.Field>
                 <label>Username</label>
                 <input onChange={handleChange} placeholder="username" name="username" />
