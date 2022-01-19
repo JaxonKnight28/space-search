@@ -17,16 +17,16 @@ function App() {
         <Menu>
           <Menu.Menu position='left'>
             <Menu.Item>
-              <Link to="/"><Icon name="home" />Home</Link>
+              <Link to="/">Home</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/search"><Icon name="search" />Search</Link>
+              <Link to="/search">Search</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/photo-of-the-day"><Icon name="photo" />Photo of the day</Link>
+              <Link to="/photo-of-the-day">Photo of the day</Link>
             </Menu.Item>
             <Menu.Item>
-              <Link to="/epic"><Icon name='camera' />EPIC</Link>
+              <Link to="/epic">EPIC</Link>
             </Menu.Item>
             <Menu.Item>
               <Link to="/rover">Rovers</Link>

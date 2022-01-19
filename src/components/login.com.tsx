@@ -45,7 +45,7 @@ export function Login() {
                 navigate('/')
             }
         })
-        if (success == false) {
+        if (success === false) {
             alert('incorrect account')
         }
     }
