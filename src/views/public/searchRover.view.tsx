@@ -15,7 +15,6 @@ export function SearchRover() {
     const [newData, setNewData] = useState<boolean>(false)
     const handleSubmit = () => {
         setNewData(true)
-
     }
 
     const handleChange = ({ target: { value, name } }: any) => {
@@ -38,7 +37,21 @@ export function SearchRover() {
                 </Form.Field>
                 <Form.Field>
                     <label>Month</label>
-                    <input placeholder="Month" name="month" onChange={handleChange} />
+                    <select className="ui dropdown fluid" name="month" onChange={handleChange}>
+                        <option value="">Select</option>
+                        <option value="1">Jan</option>
+                        <option value="2">Feb</option>
+                        <option value="3">Mar</option>
+                        <option value="4">Apr</option>
+                        <option value="5">May</option>
+                        <option value="6">Jun</option>
+                        <option value="7">Jul</option>
+                        <option value="8">Aug</option>
+                        <option value="9">Sep</option>
+                        <option value="10">Oct</option>
+                        <option value="11">Nov</option>
+                        <option value="12">Dec</option>
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <label>Day</label>
@@ -47,7 +60,7 @@ export function SearchRover() {
 
                 <Form.Field>
                     <label>Rover</label>
-                    <select className="ui fluid dropdown" name="rover" onChange={handleChange}>
+                    <select className="ui dropdown fluid" name="rover" onChange={handleChange}>
                         <option value="">Select</option>
                         <option value="curiosity">Curiosity</option>
                         <option value="opportunity">Opportunity</option>
