@@ -83,7 +83,7 @@ export function SignUpComp() {
 
     return (
         <Container>
-            <Button id="signInGoogle">Login with Google</Button>
+            <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
             <h4>Or use separate email and password:</h4>
 
             <Form onSubmit={SignInSep}>
@@ -96,7 +96,6 @@ export function SignUpComp() {
                     <input type="password" onChange={handleChange} placeholder="Password" name="password" />
                 </Form.Field>
                 <Button type="submit">Sign Up</Button>
-                {document.querySelector('#signInGoogle')?.addEventListener('click', SignInGoogle)}
             </Form>
         </Container>
     )

@@ -33,6 +33,8 @@ export function Login() {
     }
     //---firebase
     function SignInGoogle() {
+        console.log('clicked');
+
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -64,11 +66,13 @@ export function Login() {
 
 
     }
+    function test() {
 
+    }
 
     return (
         <Container>
-            <Button id="signInGoogle">Login with Google</Button>
+            <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
 
             <h4>Or use separate email and password:</h4>
             <Form onSubmit={SignInSep}>
@@ -81,7 +85,6 @@ export function Login() {
                     <input type="password" onChange={handleChange} placeholder="Password" name="password" />
                 </Form.Field>
                 <Button type="submit">Sign Up</Button>
-                {document.querySelector('#signInGoogle')?.addEventListener('click', SignInGoogle)}
             </Form>
         </Container>
     );
