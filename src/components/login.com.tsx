@@ -2,7 +2,7 @@ import { useRef, useState } from "react"
 import { useNavigate } from "react-router";
 import { Button, Container, Form, Input } from "semantic-ui-react"
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, EmailAuthProvider, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, EmailAuthProvider, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
 //set types
 export type LoginValues = {
@@ -25,12 +25,12 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const db = getFirestore()
 //FIREBASE----------
-
 export function Login() {
     const [loginData, setLogInData] = useState<LoginValues>({})
     const handleChange = ({ target: { value, name } }: any) => {
         setLogInData({ ...loginData, [name]: value })
     }
+
     //---firebase
     function SignInGoogle() {
         console.log('clicked');
@@ -62,13 +62,34 @@ export function Login() {
         let password: any = loginData.password
         console.log(email, password);
 
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
 
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage);
+
+            });
 
 
     }
-    function test() {
+    function logOut() {
+        signOut(auth).then(() => {
+            console.log('Signed out');
 
+        }).catch((error) => {
+            console.log(error);
+
+        });
     }
+
+
 
     return (
         <Container>
@@ -84,8 +105,9 @@ export function Login() {
                     <label>Password</label>
                     <input type="password" onChange={handleChange} placeholder="Password" name="password" />
                 </Form.Field>
-                <Button type="submit">Sign Up</Button>
+                <Button type="submit">Login</Button>
             </Form>
+            <Button onClick={logOut}>Sign Out</Button>
         </Container>
     );
 }
