@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 //FIREBASE---------
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
 const firebaseConfig = {
     apiKey: "AIzaSyDjlGMy1qqdL0F-7HSv3OmVlgBPnYV1wVQ",

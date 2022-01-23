@@ -1,8 +1,7 @@
-import { useRef, useState } from "react"
-import { useNavigate } from "react-router";
-import { Button, Container, Form, Input } from "semantic-ui-react"
+import { useState } from "react"
+import { Button, Container, Form } from "semantic-ui-react"
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, EmailAuthProvider, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
 //set types
 export type LoginValues = {
@@ -42,7 +41,9 @@ export function Login() {
                 const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                console.log(user);
+                //console.log(user);
+
+
 
                 // ...
             }).catch((error) => {
