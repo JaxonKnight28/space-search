@@ -40,12 +40,43 @@ export function SignUpComp() {
                 const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                //db if there isn't already a user account creates a blank image array 
+                //keeps the old array
                 if (!doc(db, "users", String(user.uid))) {
                     console.log('true');
                     const userRef = doc(db, "users", user.uid);
                     setDoc(userRef, { images: [] });
                 }
+                //context
+                window.localStorage.setItem('space-name', String(user.displayName))
+                window.localStorage.setItem('UID', String(user.uid))
+                setUser(user.uid)
+
+
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+    }
+
+    function SignUpGoogle() {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential?.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                //erases or creates new image array
+                console.log('true');
+                const userRef = doc(db, "users", user.uid);
+                setDoc(userRef, { images: [] });
                 //context
                 window.localStorage.setItem('space-name', String(user.displayName))
                 window.localStorage.setItem('UID', String(user.uid))
@@ -80,8 +111,20 @@ export function SignUpComp() {
 
     return (
         <Container>
-            <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
-            <Button onClick={logOut}>SignOut</Button>
+            <Container>
+                <h4>Click here if you have already made an account</h4>
+                <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
+            </Container>
+            <div className="ui hidden divider"></div>
+            <Container>
+                <h4>Click here if you have not made an account or want to reset an old account</h4>
+                <Button id="signInGoogle" onClick={SignUpGoogle}>Create new Account</Button>
+            </Container>
+            <div className="ui hidden divider"></div>
+            <Container>
+                <h4>Click here to sign out</h4>
+                <Button onClick={logOut}>SignOut</Button>
+            </Container>
         </Container>
     )
 }
