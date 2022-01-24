@@ -1,8 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Button, Container, Form } from "semantic-ui-react"
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
+import UserContext from "./user-context";
+import { ChangeUser } from "./UserSwitcher";
+
 //set types
 export type LoginValues = {
     email?: string;
@@ -41,9 +44,6 @@ export function Login() {
                 const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                //console.log(user);
-
-
 
                 // ...
             }).catch((error) => {
@@ -58,7 +58,6 @@ export function Login() {
             });
     }
     function SignInSep() {
-
         let email: any = loginData.email
         let password: any = loginData.password
         console.log(email, password);
@@ -89,8 +88,6 @@ export function Login() {
 
         });
     }
-
-
 
     return (
         <Container>

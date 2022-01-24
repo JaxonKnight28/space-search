@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button, Container, Form } from "semantic-ui-react";
 import { useNavigate } from "react-router";
 
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
+import UserContext from "./user-context";
 const firebaseConfig = {
     apiKey: "AIzaSyDjlGMy1qqdL0F-7HSv3OmVlgBPnYV1wVQ",
     authDomain: "space-search-aedd7.firebaseapp.com",
@@ -27,6 +28,7 @@ export type SignUpValues = {
 }
 
 export function SignUpComp() {
+    const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate()
     const [signUpData, setLogInData] = useState<SignUpValues>({})
     const handleChange = ({ target: { value, name } }: any) => {
@@ -42,6 +44,7 @@ export function SignUpComp() {
                 // The signed-in user info.
                 const user = result.user;
                 console.log(user);
+                setUser(user.uid)
 
                 // ...
             }).catch((error) => {
