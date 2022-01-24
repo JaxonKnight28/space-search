@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
-import { Container } from 'semantic-ui-react'
+import { Button, Container } from 'semantic-ui-react'
+import { SaveImage } from "../../components/saveImage.com";
+import { SavedImages } from "../private/saved.view";
 
 
 // api key: zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc
@@ -47,6 +49,7 @@ export function PhotoOfTheDay() {
                 <div className="ui hidden divider"></div>
                 <p>{data.explanation}</p>
                 <div className="ui hidden divider"></div>
+                <button onClick={() => SaveImage(`${data.url}`)}>test</button>
             </Container>
 
         );

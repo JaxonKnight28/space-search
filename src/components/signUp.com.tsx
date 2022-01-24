@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 //FIREBASE---------
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signOut } from 'firebase/auth'
 import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
 import UserContext from "./user-context";
 const firebaseConfig = {
@@ -31,9 +31,6 @@ export function SignUpComp() {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate()
     const [signUpData, setLogInData] = useState<SignUpValues>({})
-    const handleChange = ({ target: { value, name } }: any) => {
-        setLogInData({ ...signUpData, [name]: value })
-    }
 
     function SignInGoogle() {
         signInWithPopup(auth, provider)
@@ -43,8 +40,15 @@ export function SignUpComp() {
                 const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                console.log(user);
+                //db
+                const userRef = doc(db, "users", user.uid);
+                setDoc(userRef, { images: [] });
+                //email: user.email, message: `Hello ${user.displayName}!`
+                //context
+                window.localStorage.setItem('space-name', String(user.displayName))
+                window.localStorage.setItem('UID', String(user.uid))
                 setUser(user.uid)
+
 
                 // ...
             }).catch((error) => {
@@ -58,48 +62,24 @@ export function SignUpComp() {
                 // ...
             });
     }
-    function SignInSep() {
 
-        let email: any = signUpData.email
-        let password: any = signUpData.password
-        console.log(email, password);
+    function logOut() {
+        signOut(auth).then(() => {
+            console.log('Signed out');
+            window.localStorage.setItem('space-name', '')
+            window.localStorage.setItem('UID', '')
+            setUser('')
 
+        }).catch((error) => {
+            console.log(error);
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                const user = userCredential.user;
-                console.log(user);
-
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-
-                console.log(errorCode, errorMessage);
-
-                // ..
-            });
-
+        });
     }
 
     return (
         <Container>
             <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
-            <h4>Or use separate email and password:</h4>
-
-            <Form onSubmit={SignInSep}>
-                <Form.Field>
-                    <label>Email</label>
-                    <input onChange={handleChange} placeholder="Email" name="email" />
-                </Form.Field>
-                <Form.Field>
-                    <label>Password</label>
-                    <input type="password" onChange={handleChange} placeholder="Password" name="password" />
-                </Form.Field>
-                <Button type="submit">Sign Up</Button>
-            </Form>
+            <Button onClick={logOut}>SignOut</Button>
         </Container>
     )
 }

@@ -8,19 +8,20 @@ import { EpicPhotoSearch } from './views/public/EPIC.view';
 import { LoginView } from './views/public/login.view';
 import { SearchRover } from './views/public/searchRover.view';
 import { SignUp } from './views/public/signUp.view';
-import { useState, useContext, createContext } from 'react';
+import { useState, useContext, createContext, useEffect, useReducer } from 'react';
 
 import UserContext from "./components/user-context";
-import UserSwitcher from "./components/UserSwitcher";
 import { getAuth } from 'firebase/auth';
-
+import { SavedImages } from './views/private/saved.view';
 
 function App() {
-  const auth = getAuth();
-  const id = auth.currentUser?.uid;
-  console.log(id, 'test');
+  const auth = getAuth()
+  const [user, setUser] = useState(auth.currentUser?.uid);
+  useEffect(() => {
+    const test = window.localStorage.getItem('space-name')
+    setUser(String(test))
+  })
 
-  const [user, setUser] = useState(id);
   const value = { user, setUser };
 
   return (
@@ -47,16 +48,13 @@ function App() {
             </Menu.Menu>
             <Menu.Menu position='right'>
               <Menu.Item>
-                <Link to="/login">Login</Link>
+                <Link to="/saved">Saved Images</Link>
               </Menu.Item>
               <Menu.Item>
-                <Link to="/sign-up">Sign Up</Link>
+                <Link to="/sign-up">Account</Link>
               </Menu.Item>
               <Menu.Item>
-                <UserSwitcher />
-              </Menu.Item>
-              <Menu.Item>
-                <span>{user}</span>
+                <span>Welcome: {user}</span>
               </Menu.Item>
             </Menu.Menu>
           </Menu>
@@ -69,6 +67,7 @@ function App() {
           <Route path='/photo-of-the-day' element={<PhotoOfTheDay />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/saved" element={<SavedImages />} />
         </Routes>
       </div>
     </UserContext.Provider>

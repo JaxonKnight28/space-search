@@ -4,7 +4,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
 import UserContext from "./user-context";
-import { ChangeUser } from "./UserSwitcher";
 
 //set types
 export type LoginValues = {
@@ -57,28 +56,28 @@ export function Login() {
                 // ...
             });
     }
-    function SignInSep() {
-        let email: any = loginData.email
-        let password: any = loginData.password
-        console.log(email, password);
+    // function SignInSep() {
+    //     let email: any = loginData.email
+    //     let password: any = loginData.password
+    //     console.log(email, password);
 
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in 
-                const user = userCredential.user;
-                console.log(user);
+    //     signInWithEmailAndPassword(auth, email, password)
+    //         .then((userCredential) => {
+    //             // Signed in 
+    //             const user = userCredential.user;
+    //             console.log(user);
 
-                // ...
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                alert(errorMessage);
+    //             // ...
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             alert(errorMessage);
 
-            });
+    //         });
 
 
-    }
+    // }
     function logOut() {
         signOut(auth).then(() => {
             console.log('Signed out');
@@ -93,7 +92,7 @@ export function Login() {
         <Container>
             <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
 
-            <h4>Or use separate email and password:</h4>
+            {/* <h4>Or use separate email and password:</h4>
             <Form onSubmit={SignInSep}>
                 <Form.Field>
                     <label>Email</label>
@@ -105,7 +104,7 @@ export function Login() {
                 </Form.Field>
                 <Button type="submit">Login</Button>
             </Form>
-            <Button onClick={logOut}>Sign Out</Button>
+            <Button onClick={logOut}>Sign Out</Button> */}
         </Container>
     );
 }
