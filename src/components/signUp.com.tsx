@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import { Button, Container, Form } from "semantic-ui-react";
+import { Button, Container } from "semantic-ui-react";
 import { useNavigate } from "react-router";
 
 //FIREBASE---------
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signOut } from 'firebase/auth'
-import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
+import { getFirestore, doc, setDoc } from 'firebase/firestore'
 import UserContext from "./user-context";
 const firebaseConfig = {
     apiKey: "AIzaSyDjlGMy1qqdL0F-7HSv3OmVlgBPnYV1wVQ",
@@ -40,10 +40,12 @@ export function SignUpComp() {
                 const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                //db
-                const userRef = doc(db, "users", user.uid);
-                setDoc(userRef, { images: [] });
-                //email: user.email, message: `Hello ${user.displayName}!`
+                //db if there isn't already a user account creates a blank image array 
+                if (!doc(db, "users", String(user.uid))) {
+                    console.log('true');
+                    const userRef = doc(db, "users", user.uid);
+                    setDoc(userRef, { images: [] });
+                }
                 //context
                 window.localStorage.setItem('space-name', String(user.displayName))
                 window.localStorage.setItem('UID', String(user.uid))

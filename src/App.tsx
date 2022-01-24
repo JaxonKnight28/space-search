@@ -1,14 +1,14 @@
 import './styles/App.css';
 import { PhotoOfTheDay } from './views/public/photoOfTheDay.view';
 import { Routes, Route, Link } from 'react-router-dom'
-import { Button, Icon, Menu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import { SearchPage } from './views/public/search.view';
 import { HomePage } from './views/public/home.view';
 import { EpicPhotoSearch } from './views/public/EPIC.view';
 import { LoginView } from './views/public/login.view';
 import { SearchRover } from './views/public/searchRover.view';
 import { SignUp } from './views/public/signUp.view';
-import { useState, useContext, createContext, useEffect, useReducer } from 'react';
+import { useState, useEffect } from 'react';
 
 import UserContext from "./components/user-context";
 import { getAuth } from 'firebase/auth';
@@ -32,9 +32,6 @@ function App() {
             <Menu.Menu position='left'>
               <Menu.Item>
                 <Link to="/">Home</Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link to="/search">Search</Link>
               </Menu.Item>
               <Menu.Item>
                 <Link to="/photo-of-the-day">Photo of the day</Link>
@@ -65,7 +62,6 @@ function App() {
           <Route path='/rover' element={<SearchRover />} />
           <Route path='/epic' element={<EpicPhotoSearch />} />
           <Route path='/photo-of-the-day' element={<PhotoOfTheDay />} />
-          <Route path="/search" element={<SearchPage />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/saved" element={<SavedImages />} />
         </Routes>

@@ -1,9 +1,6 @@
-import { getFirestore, doc, setDoc, onSnapshot, updateDoc, arrayUnion } from 'firebase/firestore'
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signOut } from 'firebase/auth'
+import { getFirestore, doc, updateDoc, arrayUnion, deleteField, arrayRemove } from 'firebase/firestore'
+import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 import { initializeApp } from 'firebase/app';
-
-import { useContext } from 'react';
-import UserContext from "./user-context";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDjlGMy1qqdL0F-7HSv3OmVlgBPnYV1wVQ",
@@ -20,8 +17,6 @@ const provider = new GoogleAuthProvider();
 const db = getFirestore()
 
 export async function SaveImage(params: any) {
-    console.log(params);
-
     const userId = auth.currentUser?.uid
     const userRef = doc(db, "users", String(userId));
     await updateDoc(userRef, {
@@ -30,4 +25,11 @@ export async function SaveImage(params: any) {
 
     // setDoc(userRef, { email: user.email, message: `Hello ${user.displayName}!` });
 }
-SaveImage('test')
+
+export async function RemoveImage(toGo: any) {
+    const userId = auth.currentUser?.uid
+    const userRef = doc(db, "users", String(userId));
+    await updateDoc(userRef, {
+        images: arrayRemove(toGo)
+    });
+}

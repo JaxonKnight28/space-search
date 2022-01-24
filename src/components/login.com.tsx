@@ -1,9 +1,8 @@
-import { useContext, useState } from "react"
-import { Button, Container, Form } from "semantic-ui-react"
+import { useState } from "react"
+import { Button, Container } from "semantic-ui-react"
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, signInWithEmailAndPassword } from 'firebase/auth'
-import { getFirestore, doc, setDoc, onSnapshot } from 'firebase/firestore'
-import UserContext from "./user-context";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 //set types
 export type LoginValues = {
@@ -47,12 +46,12 @@ export function Login() {
                 // ...
             }).catch((error) => {
                 // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                //const errorCode = error.code;
+                //const errorMessage = error.message;
                 // The email of the user's account used.
-                const email = error.email;
+                //const email = error.email;
                 // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
+                // credential = GoogleAuthProvider.credentialFromError(error);
                 // ...
             });
     }

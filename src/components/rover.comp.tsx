@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Container, Image } from "semantic-ui-react";
+import { Button, Container, Image } from "semantic-ui-react";
+import { SaveImage } from "./saveImage.com";
 
 
 export function Rovers(props: any) {
@@ -42,8 +43,12 @@ export function Rovers(props: any) {
                     <h3>There are {len} photos(s) from Rover: {rover} on {month}-{day}-{year} (mm-dd-yyy)</h3>
                 </Container>
 
-                {arr.map((item: any) => (
-                    <Image key={item.id} src={item.img_src} />
+                {arr.map((item: any, index: any) => (
+                    <Container textAlign="center" margin={10}>
+                        <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} floated="right" color="blue">Save</Button>
+                        <Image key={item.id} src={item.img_src} />
+                        <div className="ui hidden divider"></div>
+                    </Container>
                 ))}
             </Container >
         );

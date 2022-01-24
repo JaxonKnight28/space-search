@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Container, Image } from "semantic-ui-react";
+import { Button, Container, Image } from "semantic-ui-react";
+import { SaveImage } from "./saveImage.com";
 
 export function EpicGetter(params: any) {
     const [error, setError] = useState(null);
@@ -39,8 +40,12 @@ export function EpicGetter(params: any) {
             <Container textAlign="center">
                 <h4>{len} photo(s) from {month}-{day}-{year} (mm-dd-yyy)</h4>
                 <Container>
-                    {arr.map((item: any) => (
-                        <Image key={item.identifier} src={`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`} />
+                    {arr.map((item: any, index: any) => (
+                        <Container>
+                            <Button key={index} onClick={() => SaveImage(`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`)} floated="right" color="blue">Save</Button>
+                            <Image key={item.identifier} src={`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`} />
+                            <div className="ui hidden divider"></div>
+                        </Container>
                     ))}
                 </Container>
             </Container>
