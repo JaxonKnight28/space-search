@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Container, Image } from "semantic-ui-react";
 import { SaveImage } from "./saveImage.com";
+import UserContext from "./user-context";
 
 
 export function Rovers(props: any) {
@@ -12,8 +13,6 @@ export function Rovers(props: any) {
     const month = props.data.month
     const day = props.data.day
     const rover = props.data.rover
-    console.log(day);
-
 
     useEffect(() => {
         fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${year}-${month}-${day}&api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`)
@@ -29,6 +28,8 @@ export function Rovers(props: any) {
                 }
             )
     }, [])
+
+    const { user, setUser } = useContext(UserContext);
 
     if (error) {
         return <div>Error: {error['message']}</div>;
@@ -49,7 +50,7 @@ export function Rovers(props: any) {
                     <Container textAlign="center">
                         <Image key={item.id} src={item.img_src} />
                         <div className="ui hidden divider"></div>
-                        <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} color="blue">Save Image</Button>
+                        {user ? <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} color="blue">Save Image</Button> : null}
                         <div className="ui divider"></div>
                     </Container>
                 ))}

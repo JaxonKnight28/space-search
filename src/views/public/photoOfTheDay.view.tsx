@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Button, Container } from 'semantic-ui-react'
 import { SaveImage } from "../../components/saveImage.com";
+import UserContext from "../../components/user-context";
 import { SavedImages } from "../private/saved.view";
 
 
@@ -31,6 +32,7 @@ export function PhotoOfTheDay() {
             )
     }, [])
 
+    const { user, setUser } = useContext(UserContext);
 
     if (error) {
         return <div>Error: {error['message']}</div>;
@@ -48,7 +50,7 @@ export function PhotoOfTheDay() {
                 <div className="ui hidden divider"></div>
                 <p>{data.explanation}</p>
                 <div className="ui hidden divider"></div>
-                <Button onClick={() => SaveImage(`${data.url}`)} color="blue">Save Image</Button>
+                {user ? <Button onClick={() => SaveImage(`${data.url}`)} color="blue">Save Image</Button> : null}
                 <div className="ui hidden divider"></div>
             </Container>
 

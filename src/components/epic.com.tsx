@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, Container, Image } from "semantic-ui-react";
 import { SaveImage } from "./saveImage.com";
+import UserContext from "./user-context";
 
 export function EpicGetter(params: any) {
     const [error, setError] = useState(null);
@@ -27,6 +28,8 @@ export function EpicGetter(params: any) {
             )
     }, [])
 
+    const { user, setUser } = useContext(UserContext);
+
     if (error) {
         return <div>Error: {error['message']}</div>;
     } else if (!isLoaded) {
@@ -44,7 +47,7 @@ export function EpicGetter(params: any) {
                         <Container>
                             <Image key={item.identifier} src={`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`} />
                             <div className="ui hidden divider"></div>
-                            <Button key={index} onClick={() => SaveImage(`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`)} color="blue">Save</Button>
+                            {user ? <Button key={index} onClick={() => SaveImage(`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`)} color="blue">Save</Button> : null}
                             <div className="ui divider"></div>
                         </Container>
                     ))}

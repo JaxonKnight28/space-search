@@ -44,15 +44,20 @@ function App() {
               </Menu.Item>
             </Menu.Menu>
             <Menu.Menu position='right'>
-              <Menu.Item>
-                <Link to="/saved">Saved Images</Link>
-              </Menu.Item>
+              {user ?
+                <Menu.Item>
+                  <Link to="/saved">Saved Images</Link>
+                </Menu.Item>
+                : null}
               <Menu.Item>
                 <Link to="/sign-up">Account</Link>
               </Menu.Item>
-              <Menu.Item>
-                <span>Welcome: {user}</span>
-              </Menu.Item>
+              {user ?
+                <Menu.Item>
+                  <span>Welcome: {user}</span>
+                </Menu.Item>
+                : null}
+
             </Menu.Menu>
           </Menu>
         </header>
