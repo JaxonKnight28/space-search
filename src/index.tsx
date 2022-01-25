@@ -4,35 +4,6 @@ import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore } from 'redux';
-
-//STORE
-
-//ACTION 
-const login = () => {
-  return {
-    type: 'LOGIN'
-  }
-}
-const logOut = () => {
-  return {
-    type: 'LOGOUT'
-  }
-}
-
-//REDUCER
-const manager = (state = 0, action: any) => {
-  switch (action.type) {
-    case 'LOGIN':
-      return state = 10;
-    case 'LOGOUT':
-      return state = 5
-  }
-}
-
-// let store = createStore(manager)
-
-// store
 
 ReactDOM.render(
   <React.StrictMode>

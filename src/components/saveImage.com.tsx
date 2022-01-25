@@ -1,4 +1,4 @@
-import { getFirestore, doc, updateDoc, arrayUnion, deleteField, arrayRemove } from 'firebase/firestore'
+import { getFirestore, doc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
 import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 import { initializeApp } from 'firebase/app';
 

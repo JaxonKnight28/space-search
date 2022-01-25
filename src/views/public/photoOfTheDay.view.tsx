@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { Button, Container } from 'semantic-ui-react'
 import { SaveImage } from "../../components/saveImage.com";
 import UserContext from "../../components/user-context";
-import { SavedImages } from "../private/saved.view";
 
 
 // api key: zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc
@@ -39,21 +38,36 @@ export function PhotoOfTheDay() {
     } else if (!isLoaded) {
         return <Container textAlign="center"><div>Loading...</div></Container>;
     } else {
-        return (
-            <Container textAlign="center">
-                <div className="ui hidden divider"></div>
-                <h1>Photo of the day</h1>
+        if (data.media_type === 'image') {
+            return (
+                <Container textAlign="center">
+                    <div className="ui hidden divider"></div>
+                    <h1>Astronomy Picture of the Day (APOD)</h1>
+                    <div className="ui divider"></div>
+                    <h1>{data.title}</h1>
+                    <img src={data.url} alt={data.url} />
+                    <div className="ui hidden divider"></div>
+                    <p>{data.explanation}</p>
+                    <div className="ui hidden divider"></div>
+                    {user ? <Button onClick={() => SaveImage(`${data.url}`)} color="blue">Save Image</Button> : null}
+                    <div className="ui hidden divider"></div>
+                </Container>
 
-                <div className="ui divider"></div>
-                <h1>{data.title}</h1>
-                <img src={data.url} alt="" />
-                <div className="ui hidden divider"></div>
-                <p>{data.explanation}</p>
-                <div className="ui hidden divider"></div>
-                {user ? <Button onClick={() => SaveImage(`${data.url}`)} color="blue">Save Image</Button> : null}
-                <div className="ui hidden divider"></div>
-            </Container>
 
-        );
+            );
+        } else {
+            return (
+                <Container textAlign="center">
+                    <div className="ui hidden divider"></div>
+                    <h1>Astronomy Picture of the Day (APOD)</h1>
+                    <div className="ui divider"></div>
+                    <h1>{data.title}</h1>
+                    <iframe width="560" height="315" src={data.url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                    <div className="ui hidden divider"></div>
+                    <p>{data.explanation}</p>
+                    <div className="ui hidden divider"></div>
+                </Container>
+            )
+        }
     }
 }

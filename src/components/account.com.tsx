@@ -3,7 +3,7 @@ import { Button, Container } from "semantic-ui-react";
 import { useNavigate } from "react-router";
 
 //FIREBASE---------
-import { initializeApp } from "firebase/app";
+//import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
 import UserContext from "./user-context";
@@ -16,7 +16,7 @@ const firebaseConfig = {
     appId: "1:426086005370:web:0273f231c84b1a03e9d9c3"
 };
 
-const app = initializeApp(firebaseConfig);
+//const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const db = getFirestore()
@@ -27,17 +27,16 @@ export type SignUpValues = {
     password?: string;
 }
 
-export function SignUpComp() {
+export function Account() {
     const { user, setUser } = useContext(UserContext);
-    const navigate = useNavigate()
-    const [signUpData, setLogInData] = useState<SignUpValues>({})
+    const navigate = useNavigate();
 
     function SignInGoogle() {
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential?.accessToken;
+                //const credential = GoogleAuthProvider.credentialFromResult(result);
+                //const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user;
                 //keeps the old array
@@ -47,9 +46,10 @@ export function SignUpComp() {
                     setDoc(userRef, { images: [] });
                 }
                 //context
-                window.localStorage.setItem('space-name', String(user.displayName))
-                window.localStorage.setItem('UID', String(user.uid))
-                setUser(user.uid)
+                window.localStorage.setItem('space-name', String(user.displayName));
+                window.localStorage.setItem('UID', String(user.uid));
+                setUser(user.uid);
+                navigate('/');
 
 
                 // ...
@@ -57,10 +57,9 @@ export function SignUpComp() {
                 // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // The email of the user's account used.
                 const email = error.email;
-                // The AuthCredential type that was used.
                 const credential = GoogleAuthProvider.credentialFromError(error);
+                console.log(errorMessage, errorCode, email, credential);
                 // ...
             });
     }
@@ -69,8 +68,8 @@ export function SignUpComp() {
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
-                const credential = GoogleAuthProvider.credentialFromResult(result);
-                const token = credential?.accessToken;
+                //const credential = GoogleAuthProvider.credentialFromResult(result);
+                //const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user;
                 //erases or creates new image array
@@ -78,9 +77,10 @@ export function SignUpComp() {
                 const userRef = doc(db, "users", user.uid);
                 setDoc(userRef, { images: [] });
                 //context
-                window.localStorage.setItem('space-name', String(user.displayName))
-                window.localStorage.setItem('UID', String(user.uid))
-                setUser(user.uid)
+                window.localStorage.setItem('space-name', String(user.displayName));
+                window.localStorage.setItem('UID', String(user.uid));
+                setUser(user.uid);
+                navigate('/');
 
 
                 // ...
@@ -88,20 +88,20 @@ export function SignUpComp() {
                 // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // The email of the user's account used.
                 const email = error.email;
-                // The AuthCredential type that was used.
                 const credential = GoogleAuthProvider.credentialFromError(error);
+                console.log(errorMessage, errorCode, email, credential);
+                // The AuthCredential type that was used.
                 // ...
             });
     }
 
     function logOut() {
         signOut(auth).then(() => {
-            console.log('Signed out');
-            window.localStorage.setItem('space-name', '')
-            window.localStorage.setItem('UID', '')
-            setUser('')
+            window.localStorage.setItem('space-name', '');
+            window.localStorage.setItem('UID', '');
+            setUser('');
+            navigate('/')
 
         }).catch((error) => {
             console.log(error);
@@ -110,7 +110,7 @@ export function SignUpComp() {
     }
 
     return (
-        <Container>
+        <Container style={{ width: 500 }}>
             <div className="ui hidden divider"></div>
             <h2>Here you can login with a Google account</h2>
             <Container>

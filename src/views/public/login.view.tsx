@@ -1,6 +1,5 @@
-
 import { Container } from "semantic-ui-react";
-import { Login } from "../../components/login.com";
+import { Login } from "../../components/OLD-login.com";
 
 export function LoginView() {
 

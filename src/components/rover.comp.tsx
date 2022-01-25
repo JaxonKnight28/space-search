@@ -43,7 +43,7 @@ export function Rovers(props: any) {
         return (
             <Container style={{ margin: 40 }} textAlign="center" fluid>
                 <Container>
-                    <h3>There are {len} photos(s) from Rover: {rover} on {month}-{day}-{year} (mm-dd-yyy)</h3>
+                    <h3>There are {len} photos(s) from Rover: {rover} on {month}-{day}-{year} (mm-dd-yyy):</h3>
                 </Container>
 
                 {arr.map((item: any, index: any) => (

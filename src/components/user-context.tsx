@@ -2,13 +2,17 @@ import React from "react";
 import { getAuth } from "firebase/auth";
 
 const auth = getAuth();
-const id = auth.currentUser?.uid;
+let id = auth.currentUser?.uid;
+if (auth.currentUser?.uid == undefined) {
+    id = ''
+}
 
 
 // set the defaults
 const UserContext = React.createContext({
     user: id,
-    setUser: (user: string) => { }
+    setUser: (user: string) => { '' }
 });
+
 
 export default UserContext;

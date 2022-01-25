@@ -31,10 +31,6 @@ export function SearchRover() {
 
             <Form onSubmit={handleSubmit}>
                 <Form.Field>
-                    <label>Year</label>
-                    <input placeholder="Year" name="year" onChange={handleChange} />
-                </Form.Field>
-                <Form.Field>
                     <label>Month</label>
                     <select className="ui dropdown fluid" name="month" onChange={handleChange}>
                         <option value="">Select</option>
@@ -89,6 +85,10 @@ export function SearchRover() {
                         <option value="31">31</option>
                     </select>
                 </Form.Field>
+                <Form.Field>
+                    <label>Year</label>
+                    <input placeholder="Year" name="year" onChange={handleChange} />
+                </Form.Field>
 
                 <Form.Field>
                     <label>Rover</label>
@@ -105,6 +105,15 @@ export function SearchRover() {
                 <Button type="submit">Search</Button>
             </Form>
             {newData && <Rovers data={searchData} />}
+            {newData ? null :
+                <>
+                    <h4>Examples:</h4>
+                    <p>Jan 1st 2022, Curiosity</p>
+                    <p>May 1st 2009, Spirit (This is when Rover Spirit got stuck in the 'sand trap')</p>
+                    <p></p>
+                </>
+            }
+
         </Container >
     )
 }

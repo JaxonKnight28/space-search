@@ -1,6 +1,6 @@
-import { getFirestore, doc, setDoc, onSnapshot, getDoc, collection } from 'firebase/firestore'
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signOut } from 'firebase/auth'
-import { initializeApp } from 'firebase/app';
+import { getFirestore, doc, onSnapshot } from 'firebase/firestore'
+import { getAuth, GoogleAuthProvider } from 'firebase/auth'
+//import { initializeApp } from 'firebase/app';
 
 import { useContext, useEffect, useState } from 'react';
 import UserContext from "../../components/user-context";
@@ -16,7 +16,7 @@ const firebaseConfig = {
     appId: "1:426086005370:web:0273f231c84b1a03e9d9c3"
 };
 
-const app = initializeApp(firebaseConfig);
+//const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const db = getFirestore()
@@ -30,7 +30,6 @@ export function SavedImages() {
 
     useEffect(() => {
         const unsubscribe = onSnapshot(doc(db, "users", String(userId)), (doc) => {
-            //console.log("Current data: ", doc.data());
             setImages(doc.data())
         });
         return () => unsubscribe()

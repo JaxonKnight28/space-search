@@ -31,10 +31,6 @@ export function EpicPhotoSearch() {
             </Container>
             <Form onSubmit={handleSubmit}>
                 <Form.Field>
-                    <label>Year</label>
-                    <input placeholder="Year" name="year" onChange={handleChange} />
-                </Form.Field>
-                <Form.Field>
                     <label>Month</label>
                     <select className="ui dropdown fluid" name="month" onChange={handleChange}>
                         <option value="">Select</option>
@@ -90,6 +86,10 @@ export function EpicPhotoSearch() {
                     </select>
                 </Form.Field>
                 <Form.Field>
+                    <label>Year</label>
+                    <input placeholder="Year" name="year" onChange={handleChange} />
+                </Form.Field>
+                <Form.Field>
                     <Form.Group grouped onChange={handleChange}>
                         <label>Quality</label>
                         <Form.Field
@@ -112,6 +112,13 @@ export function EpicPhotoSearch() {
                 <Button type="submit">Search</Button>
             </Form>
             {newData && <EpicGetter data={searchData} />}
+            {newData ? null :
+                <>
+                    <h4>Examples:</h4>
+                    <p>October 10th 2018, A category 5 hurricane hit Florida</p>
+                    <p></p>
+                </>
+            }
         </Container>
     )
 }

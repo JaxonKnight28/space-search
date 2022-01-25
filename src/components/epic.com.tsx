@@ -4,6 +4,7 @@ import { SaveImage } from "./saveImage.com";
 import UserContext from "./user-context";
 
 export function EpicGetter(params: any) {
+    const { user, setUser } = useContext(UserContext);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [data, setItems] = useState<any>([]);
@@ -12,6 +13,9 @@ export function EpicGetter(params: any) {
     const month = params.data.month
     const day = params.data.day
     const quality = params.data.quality
+
+    console.log(user);
+
 
     useEffect(() => {
         fetch(`https://epic.gsfc.nasa.gov/api/${quality}/date/${year}-${month}-${day}?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`)
@@ -28,7 +32,7 @@ export function EpicGetter(params: any) {
             )
     }, [])
 
-    const { user, setUser } = useContext(UserContext);
+
 
     if (error) {
         return <div>Error: {error['message']}</div>;
