@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Button, Container } from "semantic-ui-react";
 import { useNavigate } from "react-router";
 
@@ -21,11 +21,6 @@ const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const db = getFirestore()
 //FIREBASE----------
-
-export type SignUpValues = {
-    email?: string;
-    password?: string;
-}
 
 export function Account() {
     const { user, setUser } = useContext(UserContext);

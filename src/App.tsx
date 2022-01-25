@@ -60,7 +60,7 @@ function App() {
                 <Menu.Item>
                   <span>Welcome: {user}</span>
                 </Menu.Item>
-                : signedIn}
+                : null}
 
             </Menu.Menu>
           </Menu>

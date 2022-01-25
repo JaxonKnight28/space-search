@@ -117,5 +117,3 @@ export function SearchRover() {
         </Container >
     )
 }
-//<Rovers search={searchData}
-//<pre>{JSON.stringify(searchData, null, 2)}</pre>
