@@ -42,9 +42,10 @@ export function EpicGetter(params: any) {
                 <Container>
                     {arr.map((item: any, index: any) => (
                         <Container>
-                            <Button key={index} onClick={() => SaveImage(`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`)} floated="right" color="blue">Save</Button>
                             <Image key={item.identifier} src={`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`} />
                             <div className="ui hidden divider"></div>
+                            <Button key={index} onClick={() => SaveImage(`https://api.nasa.gov/EPIC/archive/${quality}/${year}/${month}/${day}/png/${item.image}.png?api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`)} color="blue">Save</Button>
+                            <div className="ui divider"></div>
                         </Container>
                     ))}
                 </Container>

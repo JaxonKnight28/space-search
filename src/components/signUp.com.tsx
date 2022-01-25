@@ -111,16 +111,18 @@ export function SignUpComp() {
 
     return (
         <Container>
+            <div className="ui hidden divider"></div>
+            <h2>Here you can login with a Google account</h2>
             <Container>
                 <h4>Click here if you have already made an account</h4>
                 <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
             </Container>
-            <div className="ui hidden divider"></div>
+            <div className="ui divider"></div>
             <Container>
                 <h4>Click here if you have not made an account or want to reset an old account</h4>
                 <Button id="signInGoogle" onClick={SignUpGoogle}>Create new Account</Button>
             </Container>
-            <div className="ui hidden divider"></div>
+            <div className="ui divider"></div>
             <Container>
                 <h4>Click here to sign out</h4>
                 <Button onClick={logOut}>SignOut</Button>

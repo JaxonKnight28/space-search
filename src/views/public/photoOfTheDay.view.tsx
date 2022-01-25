@@ -39,9 +39,8 @@ export function PhotoOfTheDay() {
     } else {
         return (
             <Container textAlign="center">
-                {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
-                <h3>NASA has an API called APOD (Astronomy Picture of the Day)</h3>
-                <h3>Each day there is a new photo from NASA related to Astronomy along with a description of what the picture is.</h3>
+                <div className="ui hidden divider"></div>
+                <h1>Photo of the day</h1>
 
                 <div className="ui divider"></div>
                 <h1>{data.title}</h1>

@@ -12,6 +12,8 @@ export function Rovers(props: any) {
     const month = props.data.month
     const day = props.data.day
     const rover = props.data.rover
+    console.log(day);
+
 
     useEffect(() => {
         fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?earth_date=${year}-${month}-${day}&api_key=zXuu0a69xd8M3vyEJWURzxgSKDETAoioniuWN2pc`)
@@ -44,10 +46,11 @@ export function Rovers(props: any) {
                 </Container>
 
                 {arr.map((item: any, index: any) => (
-                    <Container textAlign="center" margin={10}>
-                        <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} floated="right" color="blue">Save</Button>
+                    <Container textAlign="center">
                         <Image key={item.id} src={item.img_src} />
                         <div className="ui hidden divider"></div>
+                        <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} color="blue">Save Image</Button>
+                        <div className="ui divider"></div>
                     </Container>
                 ))}
             </Container >

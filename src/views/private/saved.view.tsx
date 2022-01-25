@@ -40,12 +40,18 @@ export function SavedImages() {
 
     return (
         <Container>
-            <h2>These are the saved images from {user}:</h2>
+            <div className="ui hidden divider"></div>
+            <Container textAlign='center'>
+                <h1>These are the saved images for {user}:</h1>
+                <div className="ui divider"></div>
+            </Container>
             {
                 imgData?.map((item: any, index: any) => (
-                    <Container>
-                        <Button key={index} onClick={() => RemoveImage(`${item}`)} floated="right" color="red">Remove</Button>
-                        <Image key={index} src={item} />
+                    <Container textAlign='center'>
+                        <Image src={item} />
+                        <div className="ui hidden divider"></div>
+                        <Button key={index} onClick={() => RemoveImage(`${item}`)} color="red">Remove</Button>
+                        <div className="ui divider"></div>
 
                     </Container>
                 ))
