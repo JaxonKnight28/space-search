@@ -9,7 +9,7 @@ export function HomePage() {
             <Container textAlign="left">
                 <h2>Account Instructions:</h2>
                 <h4>1. Navigate to 'Account' page</h4>
-                <h4>2. Select 'Create new Account' if you do not have an account created or select 'Login with Google' if you have already made an account</h4>
+                <h4>2. Select 'Create new Account with Google' if you do not have an account created or select 'Login with Google' if you have already made an account</h4>
                 <h4>3. After creating an account you can view images from any page and click the 'Save' button next to an image to save them</h4>
                 <h4>You can view your saved images under the 'Saved Images' page</h4>
                 <h4>NOTE: You may look at any images without an account but you won't be able to save them</h4>

@@ -126,6 +126,7 @@ export function EpicPhotoSearch() {
                 <>
                     <h4>Examples:</h4>
                     <p>October 10th 2018, A category 5 hurricane hit Florida</p>
+                    <h5>EPIC photos are available from Jun. 13, 2015 and on</h5>
                     <div className="ui hidden divider"></div>
                     <div className="ui hidden divider"></div>
                 </>

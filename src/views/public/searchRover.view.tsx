@@ -136,7 +136,6 @@ export function SearchRover() {
                     <h5>Sprit's life: (Aug. 6, 2012 - Today)</h5>
                     <h5>Opportunity's life: (Jan. 26, 2004 — Jun. 11, 2018)</h5>
                     <h5>Spirit's life: (Jan. 5, 2004 — Mar. 21, 2010)</h5>
-                    <p></p>
                     <div className="ui hidden divider"></div>
                     <div className="ui hidden divider"></div>
                 </>

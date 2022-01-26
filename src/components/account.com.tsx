@@ -36,7 +36,6 @@ export function Account() {
                 const user = result.user;
                 //keeps the old array
                 if (!doc(db, "users", String(user.uid))) {
-                    console.log('true');
                     const userRef = doc(db, "users", user.uid);
                     setDoc(userRef, { images: [] });
                 }
@@ -68,7 +67,6 @@ export function Account() {
                 // The signed-in user info.
                 const user = result.user;
                 //erases or creates new image array
-                console.log('true');
                 const userRef = doc(db, "users", user.uid);
                 setDoc(userRef, { images: [] });
                 //context
@@ -115,7 +113,7 @@ export function Account() {
             <div className="ui divider"></div>
             <Container>
                 <h4>Click here if you have not made an account or want to reset an old account</h4>
-                <Button id="signInGoogle" onClick={SignUpGoogle}>Create new Account</Button>
+                <Button id="signInGoogle" onClick={SignUpGoogle}>Create new Account with Google</Button>
             </Container>
             <div className="ui divider"></div>
             <Container>
