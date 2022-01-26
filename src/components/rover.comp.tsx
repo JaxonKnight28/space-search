@@ -50,7 +50,7 @@ export function Rovers(props: any) {
                     <Container textAlign="center">
                         <Image key={item.id} src={item.img_src} />
                         <div className="ui hidden divider"></div>
-                        {user ? <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} color="blue">Save Image</Button> : null}
+                        {user ? <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} color="blue">Save</Button> : null}
                         <div className="ui divider"></div>
                     </Container>
                 ))}
