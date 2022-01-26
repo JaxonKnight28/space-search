@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { Button, Container } from 'semantic-ui-react'
+import { Button, Container, Image } from 'semantic-ui-react'
 import { SaveImage } from "../../components/saveImage.com";
 import UserContext from "../../components/user-context";
 
@@ -45,7 +45,7 @@ export function PhotoOfTheDay() {
                     <h1>Astronomy Picture of the Day (APOD)</h1>
                     <div className="ui divider"></div>
                     <h1>{data.title}</h1>
-                    <img src={data.url} alt={data.url} />
+                    <Image src={data.url} alt={data.url} />
                     <div className="ui hidden divider"></div>
                     <p>{data.explanation}</p>
                     <div className="ui hidden divider"></div>

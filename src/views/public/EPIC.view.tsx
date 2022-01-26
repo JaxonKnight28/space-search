@@ -87,7 +87,17 @@ export function EpicPhotoSearch() {
                 </Form.Field>
                 <Form.Field>
                     <label>Year</label>
-                    <input placeholder="Year" name="year" onChange={handleChange} />
+                    <select className="ui dropdown fluid" name="year" onChange={handleChange}>
+                        <option value="">Select</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                    </select>
                 </Form.Field>
                 <Form.Field>
                     <Form.Group grouped onChange={handleChange}>

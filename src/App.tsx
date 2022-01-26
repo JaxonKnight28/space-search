@@ -11,6 +11,7 @@ import UserContext from "./components/user-context";
 import { getAuth } from 'firebase/auth';
 import { SavedImages } from './views/private/saved.view';
 import { Account } from './components/account.com';
+import { NotFound } from './views/public/404.view';
 
 function App() {
   const auth = getAuth();
@@ -32,7 +33,7 @@ function App() {
     <UserContext.Provider value={value}>
       <div>
         <header>
-          <Menu>
+          <Menu stackable inverted>
             <Menu.Menu position='left'>
               <Menu.Item>
                 <Link to="/">Home</Link>
@@ -72,6 +73,7 @@ function App() {
           <Route path='/photo-of-the-day' element={<PhotoOfTheDay />} />
           <Route path="/account" element={<Account />} />
           <Route path="/saved" element={<SavedImages />} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </div>
     </UserContext.Provider>
