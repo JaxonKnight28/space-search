@@ -108,7 +108,6 @@ export function SearchRover() {
                         <option value="2006">2006</option>
                         <option value="2005">2005</option>
                         <option value="2004">2004</option>
-                        <option value="2003">2003</option>
                     </select>
                 </Form.Field>
 
@@ -132,7 +131,14 @@ export function SearchRover() {
                     <h4>Examples:</h4>
                     <p>Jan 1st 2022, Curiosity</p>
                     <p>May 1st 2009, Spirit (This is when Rover Spirit got stuck in the 'sand trap')</p>
+                    <p>Jun. 11, 2018, Opportunity (This is the last photo Opportunity sent before loosing contact with earth. Sand storm prevented solar charging)</p>
+                    <p>Jan. 5, 2004 Spirit (First photos from a Mars rover)</p>
+                    <h5>Sprit's life: (Aug. 6, 2012 - Today)</h5>
+                    <h5>Opportunity's life: (Jan. 26, 2004 — Jun. 11, 2018)</h5>
+                    <h5>Spirit's life: (Jan. 5, 2004 — Mar. 21, 2010)</h5>
                     <p></p>
+                    <div className="ui hidden divider"></div>
+                    <div className="ui hidden divider"></div>
                 </>
             }
 

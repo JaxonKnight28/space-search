@@ -44,7 +44,7 @@ export function SavedImages() {
                 <h1>These are the saved images for {user}:</h1>
                 <div className="ui divider"></div>
             </Container>
-            {
+            <>{
                 imgData?.map((item: any, index: any) => (
                     <Container textAlign='center'>
                         <Image src={item} />
@@ -55,6 +55,8 @@ export function SavedImages() {
                     </Container>
                 ))
             }
+                <div className="ui hidden divider"></div>
+            </>
         </Container>
     )
 }

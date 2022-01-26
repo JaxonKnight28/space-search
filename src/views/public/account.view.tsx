@@ -7,6 +7,7 @@ export function SignUp() {
     return (
         <Container>
             <Account />
+            <div className="ui hidden divider"></div>
         </Container >
     )
 }

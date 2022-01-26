@@ -59,7 +59,7 @@ function App() {
               </Menu.Item>
               {signedIn ?
                 <Menu.Item>
-                  <span>Welcome: {user}</span>
+                  <span>Welcome {user}!</span>
                 </Menu.Item>
                 : null}
 

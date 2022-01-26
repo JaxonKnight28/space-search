@@ -66,6 +66,7 @@ export function PhotoOfTheDay() {
                     <div className="ui hidden divider"></div>
                     <p>{data.explanation}</p>
                     <div className="ui hidden divider"></div>
+                    <div className="ui hidden divider"></div>
                 </Container>
             )
         }
