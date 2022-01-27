@@ -19,7 +19,7 @@ const db = getFirestore()
 export async function SaveImage(params: any) {
     const userId = auth.currentUser?.uid
     if (!userId) {
-        alert('Error, you must create an account or sign in before saving an image')
+        alert('Error, you must sign in before saving an image')
     }
     const userRef = doc(db, "users", String(userId));
     await updateDoc(userRef, {

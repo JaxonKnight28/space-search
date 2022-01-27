@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 //FIREBASE---------
 //import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
-import { getFirestore, doc, setDoc } from 'firebase/firestore'
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
 import UserContext from "./user-context";
 const firebaseConfig = {
     apiKey: "AIzaSyDjlGMy1qqdL0F-7HSv3OmVlgBPnYV1wVQ",
@@ -28,18 +28,22 @@ export function Account() {
 
     function SignInGoogle() {
         signInWithPopup(auth, provider)
-            .then((result) => {
+            .then(async (result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 //const credential = GoogleAuthProvider.credentialFromResult(result);
                 //const token = credential?.accessToken;
                 // The signed-in user info.
                 const user = result.user;
-                //keeps the old array
-                if (!doc(db, "users", String(user.uid))) {
-                    const userRef = doc(db, "users", user.uid);
-                    setDoc(userRef, { images: [] });
+
+                let docRef = doc(db, 'users', String(user.uid))
+                const docSnap = await getDoc(docRef)
+                //checks if the user has data already stored, if not creates it.
+                if (docSnap.exists()) {
+                    //console.log("Document data:", docSnap.data());
+                } else {
+                    // doc.data() will be undefined in this case
+                    setDoc(docRef, { images: [] });
                 }
-                //context
                 window.localStorage.setItem('space-name', String(user.displayName));
                 window.localStorage.setItem('UID', String(user.uid));
                 setUser(user.uid);
@@ -54,37 +58,6 @@ export function Account() {
                 const email = error.email;
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 console.log(errorMessage, errorCode, email, credential);
-                // ...
-            });
-    }
-
-    function SignUpGoogle() {
-        signInWithPopup(auth, provider)
-            .then((result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                //const credential = GoogleAuthProvider.credentialFromResult(result);
-                //const token = credential?.accessToken;
-                // The signed-in user info.
-                const user = result.user;
-                //erases or creates new image array
-                const userRef = doc(db, "users", user.uid);
-                setDoc(userRef, { images: [] });
-                //context
-                window.localStorage.setItem('space-name', String(user.displayName));
-                window.localStorage.setItem('UID', String(user.uid));
-                setUser(user.uid);
-                navigate('/');
-
-
-                // ...
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                const email = error.email;
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                console.log(errorMessage, errorCode, email, credential);
-                // The AuthCredential type that was used.
                 // ...
             });
     }
@@ -107,19 +80,14 @@ export function Account() {
             <div className="ui hidden divider"></div>
             <h2>Here you can login with a Google account</h2>
             <Container>
-                <h4>Click here if you have already made an account</h4>
                 <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
-            </Container>
-            <div className="ui divider"></div>
-            <Container>
-                <h4>Click here if you have not made an account or want to reset an old account</h4>
-                <Button id="signInGoogle" onClick={SignUpGoogle}>Create new Account with Google</Button>
             </Container>
             <div className="ui divider"></div>
             <Container>
                 <h4>Click here to sign out</h4>
                 <Button onClick={logOut}>SignOut</Button>
             </Container>
+
         </Container>
     )
 }

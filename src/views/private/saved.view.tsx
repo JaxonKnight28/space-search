@@ -5,7 +5,7 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 import { useContext, useEffect, useState } from 'react';
 import UserContext from "../../components/user-context";
 import { Button, Container, Image } from 'semantic-ui-react';
-import { RemoveImage } from '../../components/saveImage.com';
+import { RemoveImage } from '../../components/handleImages.com';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDjlGMy1qqdL0F-7HSv3OmVlgBPnYV1wVQ",

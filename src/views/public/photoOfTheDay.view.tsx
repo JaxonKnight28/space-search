@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Button, Container, Image } from 'semantic-ui-react'
-import { SaveImage } from "../../components/saveImage.com";
+import { SaveImage } from "../../components/handleImages.com";
 import UserContext from "../../components/user-context";
 
 

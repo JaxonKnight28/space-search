@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Button, Container, Image } from "semantic-ui-react";
-import { SaveImage } from "./saveImage.com";
+import { SaveImage } from "./handleImages.com";
 import UserContext from "./user-context";
 
 export function EpicGetter(params: any) {
