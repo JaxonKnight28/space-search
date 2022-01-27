@@ -3,7 +3,6 @@ import { Button, Container, Image } from "semantic-ui-react";
 import { SaveImage } from "./handleImages.com";
 import UserContext from "./user-context";
 
-
 export function Rovers(props: any) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -45,7 +44,6 @@ export function Rovers(props: any) {
                 <Container>
                     <h3>There are {len} photos(s) from Rover: {rover} on {month}-{day}-{year} (mm-dd-yyy):</h3>
                 </Container>
-
                 {arr.map((item: any, index: any) => (
                     <Container textAlign="center">
                         <Image key={item.id} src={item.img_src} />

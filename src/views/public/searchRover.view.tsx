@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button, Container, Form } from "semantic-ui-react"
 import { Rovers } from "../../components/rover.comp";
 
-
 export type SearchFormValues = {
     year?: string;
     month?: string;
@@ -110,7 +109,6 @@ export function SearchRover() {
                         <option value="2004">2004</option>
                     </select>
                 </Form.Field>
-
                 <Form.Field>
                     <label>Rover</label>
                     <select className="ui dropdown fluid" name="rover" onChange={handleChange}>
@@ -120,8 +118,6 @@ export function SearchRover() {
                         <option value="spirit">Spirit</option>
                     </select>
                 </Form.Field>
-
-
 
                 <Button type="submit">Search</Button>
             </Form>
@@ -140,7 +136,6 @@ export function SearchRover() {
                     <div className="ui hidden divider"></div>
                 </>
             }
-
         </Container >
     )
 }

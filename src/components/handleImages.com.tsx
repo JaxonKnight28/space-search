@@ -25,8 +25,6 @@ export async function SaveImage(params: any) {
     await updateDoc(userRef, {
         images: arrayUnion(params)
     });
-
-    // setDoc(userRef, { email: user.email, message: `Hello ${user.displayName}!` });
 }
 
 export async function RemoveImage(toGo: any) {

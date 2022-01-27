@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Container, Form, Button } from 'semantic-ui-react'
 import { EpicGetter } from "../../components/epic.com";
 
-
-
 type SearchFormValues = {
     year?: string;
     month?: string;
@@ -16,7 +14,6 @@ export function EpicPhotoSearch() {
     const [newData, setNewData] = useState<boolean>(false)
     const handleSubmit = () => {
         setNewData(true)
-
     }
 
     const handleChange = ({ target: { value, name } }: any) => {

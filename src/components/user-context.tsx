@@ -7,7 +7,6 @@ if (auth.currentUser?.uid == undefined) {
     id = ''
 }
 
-
 // set the defaults
 const UserContext = React.createContext({
     user: id,

@@ -29,8 +29,6 @@ export function EpicGetter(params: any) {
             )
     }, [])
 
-
-
     if (error) {
         return <div>Error: {error['message']}</div>;
     } else if (!isLoaded) {

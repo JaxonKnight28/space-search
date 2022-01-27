@@ -44,8 +44,6 @@ export function HomePage() {
             <div className="ui divider"></div>
             <div className="ui hidden divider"></div>
             <div className="ui hidden divider"></div>
-
-
         </Container>
     )
 }

@@ -3,7 +3,6 @@ import { Button, Container } from "semantic-ui-react";
 import { useNavigate } from "react-router";
 
 //FIREBASE---------
-//import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore'
 import UserContext from "./user-context";
@@ -16,7 +15,6 @@ const firebaseConfig = {
     appId: "1:426086005370:web:0273f231c84b1a03e9d9c3"
 };
 
-//const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
 const db = getFirestore()
@@ -29,19 +27,13 @@ export function Account() {
     function SignInGoogle() {
         signInWithPopup(auth, provider)
             .then(async (result) => {
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                //const credential = GoogleAuthProvider.credentialFromResult(result);
-                //const token = credential?.accessToken;
-                // The signed-in user info.
                 const user = result.user;
-
                 let docRef = doc(db, 'users', String(user.uid))
                 const docSnap = await getDoc(docRef)
                 //checks if the user has data already stored, if not creates it.
                 if (docSnap.exists()) {
                     //console.log("Document data:", docSnap.data());
                 } else {
-                    // doc.data() will be undefined in this case
                     setDoc(docRef, { images: [] });
                 }
                 window.localStorage.setItem('space-name', String(user.displayName));
@@ -49,16 +41,12 @@ export function Account() {
                 setUser(user.uid);
                 navigate('/');
 
-
-                // ...
             }).catch((error) => {
-                // Handle Errors here.
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 const email = error.email;
                 const credential = GoogleAuthProvider.credentialFromError(error);
                 console.log(errorMessage, errorCode, email, credential);
-                // ...
             });
     }
 
@@ -71,7 +59,6 @@ export function Account() {
 
         }).catch((error) => {
             console.log(error);
-
         });
     }
 
@@ -87,7 +74,6 @@ export function Account() {
                 <h4>Click here to sign out</h4>
                 <Button onClick={logOut}>SignOut</Button>
             </Container>
-
         </Container>
     )
 }
