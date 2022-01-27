@@ -65,7 +65,7 @@ export function Account() {
     return (
         <Container style={{ width: 500 }}>
             <div className="ui hidden divider"></div>
-            <h2>Here you can login with a Google account</h2>
+            <h2>Google account</h2>
             <Container>
                 <Button id="signInGoogle" onClick={SignInGoogle}>Login with Google</Button>
             </Container>
