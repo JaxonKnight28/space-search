@@ -4,7 +4,6 @@ export function HomePage() {
     return (
         <Container textAlign="center">
             <div className="ui hidden divider"></div>
-            {/* <h1>Space Search</h1> */}
             <img style={{ width: 200 }} src={process.env.PUBLIC_URL + '/Space-Search-Image.png'} alt="" />
             <Container textAlign="left">
                 <h2>Account Instructions:</h2>
