@@ -39,8 +39,8 @@ export function EpicGetter(params: any) {
         const len = arr.length
 
         return (
-            <Container textAlign="center">
-                <h4>{len} photo(s) from {month}-{day}-{year} (mm-dd-yyy)</h4>
+            <Container textAlign="center" fluid>
+                <h3>{len} photo(s) from {month}-{day}-{year} (mm-dd-yyy):</h3>
                 <Container>
                     {arr.map((item: any, index: any) => (
                         <Container>

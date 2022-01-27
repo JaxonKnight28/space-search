@@ -40,18 +40,18 @@ export function Rovers(props: any) {
         const len = arr.length
 
         return (
-            <Container style={{ margin: 40 }} textAlign="center" fluid>
+            <Container textAlign="center">
+                <h3>There are {len} photos(s) from Rover: {rover} on {month}-{day}-{year} (mm-dd-yyy):</h3>
                 <Container>
-                    <h3>There are {len} photos(s) from Rover: {rover} on {month}-{day}-{year} (mm-dd-yyy):</h3>
+                    {arr.map((item: any, index: any) => (
+                        <Container textAlign="center">
+                            <Image key={item.id} src={item.img_src} />
+                            <div className="ui hidden divider"></div>
+                            {user ? <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} color="blue">Save</Button> : null}
+                            <div className="ui divider"></div>
+                        </Container>
+                    ))}
                 </Container>
-                {arr.map((item: any, index: any) => (
-                    <Container textAlign="center">
-                        <Image key={item.id} src={item.img_src} />
-                        <div className="ui hidden divider"></div>
-                        {user ? <Button key={index} onClick={() => SaveImage(`${item.img_src}`)} color="blue">Save</Button> : null}
-                        <div className="ui divider"></div>
-                    </Container>
-                ))}
             </Container >
         );
     }
