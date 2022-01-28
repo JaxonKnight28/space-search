@@ -33,9 +33,10 @@ export function HomePage() {
             <Container textAlign="left">
                 <h2>Rovers</h2>
                 <h4>One of NASA's API's allows you to pick an earth date and a Mars rover. It will show all the pictures from that earth day if they exist</h4>
-                <h4>Curiosity is currently the only NASA rover still sending photos (Aug. 6, 2012 - Today)</h4>
+                <h4>Perseverance is still sending photos (Feb. 18, 2021 - Today)</h4>
+                <h4>Curiosity is still sending photos (Aug. 6, 2012 - Today)</h4>
                 <h4>Opportunity sent photos for 14 years (Jan. 26, 2004 — Jun. 11, 2018)</h4>
-                <h4>Spirits' send photos for 7 years (Jan. 5, 2004 — Mar. 21, 2010)</h4>
+                <h4>Spirit sent photos for 7 years (Jan. 5, 2004 — Mar. 21, 2010)</h4>
             </Container>
             <div className="ui divider"></div>
             <Container textAlign="left">

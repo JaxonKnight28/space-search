@@ -113,6 +113,7 @@ export function SearchRover() {
                     <label>Rover</label>
                     <select className="ui dropdown fluid" name="rover" onChange={handleChange}>
                         <option value="">Select</option>
+                        <option value="perseverance">Perseverance</option>
                         <option value="curiosity">Curiosity</option>
                         <option value="opportunity">Opportunity</option>
                         <option value="spirit">Spirit</option>
@@ -126,9 +127,11 @@ export function SearchRover() {
                 <>
                     <h4>Examples:</h4>
                     <p>Jan 1st 2022, Curiosity</p>
+                    <p>Feb. 18 and 19, 2021, Perseverance (Here you can see the sky crane and parachute that lowered Perseverance to the surface of mars</p>
                     <p>May 1st 2009, Spirit (This is when Rover Spirit got stuck in the 'sand trap')</p>
                     <p>Jun. 11, 2018, Opportunity (This is the last photo Opportunity sent before loosing contact with earth. Sand storm prevented solar charging)</p>
                     <p>Jan. 5, 2004 Spirit (First photos from a Mars rover)</p>
+                    <h5>Perseverance's life: (Feb. 18, 2021 - Today)</h5>
                     <h5>Sprit's life: (Aug. 6, 2012 - Today)</h5>
                     <h5>Opportunity's life: (Jan. 26, 2004 — Jun. 11, 2018)</h5>
                     <h5>Spirit's life: (Jan. 5, 2004 — Mar. 21, 2010)</h5>
