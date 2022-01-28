@@ -1,6 +1,6 @@
 # Space Search
 
-This is a website that I made using React with TypeScript.
+This my first application I made using React with TypeScript.
 
 It is a place where you can lookup and store images from NASA.
 
