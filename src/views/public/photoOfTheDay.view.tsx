@@ -40,7 +40,7 @@ export function PhotoOfTheDay() {
                     <div className="ui hidden divider"></div>
                     <p>{data.explanation}</p>
                     <div className="ui hidden divider"></div>
-                    {user ? <Button onClick={() => SaveImage(`${data.url}`)} color="blue">Save Image</Button> : null}
+                    {user ? <Button onClick={() => SaveImage(`${data.hdurl}`)} color="blue">Save Image</Button> : null}
                     <div className="ui hidden divider"></div>
                 </Container>
             );
